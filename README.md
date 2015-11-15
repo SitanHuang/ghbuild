@@ -27,7 +27,7 @@ only necessary outputs: --quiet
 run:
 	[user@localhost test] ghbuild # you must have ghbuild initialized on this directory
 
-#cycle
+##cycle
 1. pre-processing
 2. building
 3. installing
@@ -36,7 +36,25 @@ run:
 *Not all above are required*
 
 ##creating a task
-just create a file:
+just create a file named:
+
 	(name)-(pre|p|build|b|install|i|test|t)-(step number 0-9).rb
+
 then ghbuild will follow:
+
 	pre{step 0-9} > build{step 0-9} > install{step 0-9} > test{step 0-9}
+
+##functions
+info(string) - normal logging without new line
+
+log(string) - operational logging without new line
+
+error(string) - error logging without new line then terminate
+
+##variables
+$mode - command line --mode argument passwd
+
+$bwd - shell working directory
+
+##colorize
+see the document for ruby colorize
