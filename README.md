@@ -1,7 +1,8 @@
 # ghbuild
-colorized build system
+colorized build system using ruby
 
 # installation
+gem install colorize
 cp ghbuild* /usr/local/bin
 
 # single paged documentation
@@ -21,5 +22,21 @@ destroying a ghbuild directory:
 
 set $mode variable: --mode=xxx
 
-no verbose outputs: --quiet
+only necessary outputs: --quiet
 
+run:
+	[user@localhost test] ghbuild # you must have ghbuild initialized on this directory
+
+#cycle
+1. pre-processing
+2. building
+3. installing
+4. testing
+
+*Not all above are required*
+
+##creating a task
+just create a file:
+	(name)-(pre|p|build|b|install|i|test|t)-(step number 0-9).rb
+then ghbuild will follow:
+	pre{step 0-9} > build{step 0-9} > install{step 0-9} > test{step 0-9}
