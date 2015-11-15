@@ -1,0 +1,24 @@
+name-type-step.rb
+
+For example:
+	root-test-0.rb
+		performance.rb
+			per1.rb
+  Or
+	per1-test-0.rb
+	fun1-test-1.rb
+	per2-test-0.rb
+  And
+	core-build-1.rb
+	utils-build-2.rb
+	tests-build-3.rb
+  Finally
+	core-pre-0.rb
+
+name - whatever except '-' and your os can accept it
+
+type - build | pre | install | test
+	Or
+	   b     | p   | i       | t
+
+step - 0-9
