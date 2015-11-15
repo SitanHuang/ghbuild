@@ -2,8 +2,9 @@
 colorized build system using ruby
 
 # installation
-gem install colorize
-cp ghbuild* /usr/local/bin
+	gem install colorize
+	
+	cp ghbuild* /usr/local/bin
 
 # single paged documentation
 test if ghbuild is working:
