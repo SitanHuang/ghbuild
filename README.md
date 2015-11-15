@@ -1,6 +1,18 @@
 # ghbuild
 colorized build system using ruby
 
+# sample output
+	| Welcome to ghbuild (PRE-RELEASE)
+	| ghbuild working directory: /home/D/ruby/ghb
+	| Loading files
+	| OK
+	| Found target preprocess with 1 object(s)
+	|	Processing ./test in step 0
+	|	ghbuild executable found
+	| Found target preprocess with 2 object(s)
+	|	Processing ./test in step 0
+	|	Processing ./test1 in step 1
+
 # installation
 	gem install colorize
 	
