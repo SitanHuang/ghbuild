@@ -147,15 +147,15 @@ if !$preproc_list.empty?
 	processTarget 'pre'
 end
 if !$build_list.empty?
-	log "Found target preprocess with #{$build_list.length} object(s)\n"
+	log "Found target build with #{$build_list.length} object(s)\n"
 	processTarget 'build'
 end
 if !$install_list.empty?
-	log "Found target preprocess with #{$install_list.length} object(s)\n"
+	log "Found target install with #{$install_list.length} object(s)\n"
 	processTarget 'install'
 end
 if !$test_list.empty?
-	log "Found target preprocess with #{$test_list.length} object(s)\n"
+	log "Found target test with #{$test_list.length} object(s)\n"
 	processTarget 'test'
 end
 puts "\b"
