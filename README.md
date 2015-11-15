@@ -9,7 +9,7 @@ colorized build system using ruby
 	| Found target preprocess with 1 object(s)
 	|	Processing ./test in step 0
 	|	ghbuild executable found
-	| Found target preprocess with 2 object(s)
+	| Found target test with 2 object(s)
 	|	Processing ./test in step 0
 	|	Processing ./test1 in step 1
 
