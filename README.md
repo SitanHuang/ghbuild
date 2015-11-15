@@ -53,7 +53,7 @@ log(string) - operational logging without new line
 error(string) - error logging without new line then terminate
 
 ##variables
-$mode - command line --mode argument passwd
+$mode - command line --mode argument
 
 $bwd - shell working directory
 
