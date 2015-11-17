@@ -4,16 +4,32 @@ colorized build system using ruby
 Current Version: alpha(after PRE-RELEASE)
 
 # sample output
-	| Welcome to ghbuild (PRE-RELEASE)
-	| ghbuild working directory: /home/D/ruby/ghb
+	bash ;) 20:15:24 [SitanHuang@localhost xxx_web_project] ghbuild --version
+	| ghbuild alpha(after PRE-RELEASE)
+	bash ;) 20:15:38 [SitanHuang@localhost xxx_web_project] ghbuild
+	| Welcome to ghbuild (alpha(after PRE-RELEASE))
+	| ghbuild working directory: /home/D/JAVA-dev/xxx_web_project
+	| No ghb file detected, creating the file
+	bash ;( 20:15:46 [SitanHuang@localhost xxx_web_project] ghbuild --mode=local
+	| Mode: local
+	| Welcome to ghbuild (alpha(after PRE-RELEASE))
+	| ghbuild working directory: /home/D/JAVA-dev/xxx_web_project
 	| Loading files
 	| OK
-	| Found target preprocess with 1 object(s)
-	|	Processing ./test in step 0
-	|	ghbuild executable found
-	| Found target test with 2 object(s)
-	|	Processing ./test in step 0
-	|	Processing ./test1 in step 1
+	| Found target preprocess with 4 object(s)
+	| 	Processing out/artifacts/xxx_web_project_war_exploded/seekcab in step 0
+	| 		SeekCab~~~~~~~~~~
+	| 		ghbuild version == alpha(after PRE-RELEASE)
+	| 	Processing ./seekcab in step 0
+	| 		SeekCab~~~~~~~~~~
+	| 		ghbuild version == alpha(after PRE-RELEASE)
+	| 	Processing out/artifacts/xxx_web_project_war_exploded/WEB-INF/classes/conf/config.properties in step 1
+	| 		remoteImageDir = 192.168.0.5:8080
+	| 		Updated: config.properties
+	| 	Processing src/conf/config.properties in step 1
+	| 		remoteImageDir = 192.168.0.5:8080
+	| 		Updated: config.properties
+
 
 # installation
 	gem install colorize
