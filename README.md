@@ -1,6 +1,8 @@
 # ghbuild
 colorized build system using ruby
 
+Current Version: alpha(after PRE-RELEASE)
+
 # sample output
 	| Welcome to ghbuild (PRE-RELEASE)
 	| ghbuild working directory: /home/D/ruby/ghb
@@ -68,6 +70,8 @@ error(string) - error logging without new line then terminate
 $mode - command line --mode argument
 
 $bwd - shell working directory
+
+$VERSION - version of ghbuild
 
 ##colorize
 see the document for ruby colorize

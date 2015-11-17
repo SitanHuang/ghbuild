@@ -42,7 +42,7 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'PRE-RELEASE'
+$VERSION = 'alpha(after PRE-RELEASE)'
 
 ARGV.each do |arg|
 	if arg.start_with? '--mode='
@@ -83,7 +83,7 @@ end
 log "Loading files\n"
 
 execute do
-	Dir['**/*'].select do |file|
+	Dir['**/*.rb'].select do |file|
 		basename = File.basename file
 		if basename =~ /^([^-]+)-(pre|p|build|b|install|i|test|t)-([0-9])\.rb$/
 			step = Step.new
