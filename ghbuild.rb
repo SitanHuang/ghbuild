@@ -42,7 +42,7 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'alpha(after PRE-RELEASE)'
+$VERSION = 'alpha 0.1.3'
 
 ARGV.each do |arg|
 	if arg.start_with? '--mode='
@@ -160,4 +160,3 @@ if !$test_list.empty?
 	log "Found target test with #{$test_list.length} object(s)\n"
 	processTarget 'test'
 end
-puts "\b"
