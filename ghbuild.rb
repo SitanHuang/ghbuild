@@ -99,7 +99,7 @@ execute do
 				when 'i'
 					type = 'install'
 				when 't'
-					test = 'test'
+					type = 'test'
 			end
 			step.type = type
 			step.step = Integer(basename.sub(reg, '\3'))
