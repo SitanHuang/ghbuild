@@ -112,6 +112,8 @@ execute do
 					$install_list.push step
 				when 'test'
 					$test_list.push step
+				else
+					error "fixme:this is not possible step.type\n"
 			end
 		end
 	end
