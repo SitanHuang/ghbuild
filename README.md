@@ -1,13 +1,13 @@
 # ghbuild
 colorized build system using ruby
 
-Current Version: alpha 0.1.6pre
+Current Version: alpha 0.1.6aft
 
 # sample output
 	bash ;) 16:36:42 [SitanHuang@localhost ghb](master) ghbuild --version
-	| ghbuild alpha 0.1.6pre
+	| ghbuild alpha 0.1.6aft
 	bash ;) 16:36:46 [SitanHuang@localhost ghb](master) ghbuild --exclude=.+-test-[0-9].+ --exclude=.+-t-[0-9].+
-	| Welcome to ghbuild (alpha 0.1.6pre)
+	| Welcome to ghbuild (alpha 0.1.6aft)
 	| ghbuild working directory: /home/D/ruby/ghb
 	| Mode: 
 	| Files excluded:
@@ -70,9 +70,13 @@ then ghbuild will follow:
 ##functions
 info(string) - normal logging without new line
 
+warn(string) - warning logging without new line
+
 log(string) - operational logging without new line
 
 error(string) - error logging without new line then terminate
+
+request_root(l,s) - request root permission, l:output if success, s:output if failed
 
 ##variables
 $mode - command line --mode argument

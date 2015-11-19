@@ -32,6 +32,14 @@ def error s
 	exit 1
 end
 
+def request_root l,s
+	if ENV['USER'] == 'root'
+		log l
+	else
+		error s
+	end
+end
+
 def execute &block
 	begin
 		block.call
@@ -42,7 +50,7 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'alpha 0.1.6pre'
+$VERSION = 'alpha 0.1.6aft'
 
 $exclude_args = []
 
