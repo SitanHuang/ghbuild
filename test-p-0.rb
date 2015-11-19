@@ -3,3 +3,4 @@ if `which ghbuild` =~ /.+no ghbuild.+/
 else
 	log "\tghbuild executable found\n"
 end
+request_root "root detected\n", "root needed\n"

@@ -33,7 +33,7 @@ def error s
 end
 
 def request_root l,s
-	if ENV['USER'] == 'root'
+	if `/usr/bin/env id` =~ /\(root\)/
 		log l
 	else
 		error s
