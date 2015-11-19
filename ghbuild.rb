@@ -42,12 +42,13 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'alpha 0.1.3'
+$VERSION = 'alpha 0.1.6pre'
+
+$exclude_args = []
 
 ARGV.each do |arg|
 	if arg.start_with? '--mode='
 		$mode = arg.gsub '--mode=', ''
-		log "Mode: #{$mode}\n"
 	elsif arg == '--quiet'
 		$quiet = true
 	elsif arg == '--destroy'
@@ -55,7 +56,11 @@ ARGV.each do |arg|
 		execute do
 			Dir.delete '.ghb'
 		end
-		exit 1
+		exit 0
+	elsif arg.start_with? '--exclude='
+		tmp_exclude = arg.gsub '--exclude=', ''
+		compiled = Regexp.new tmp_exclude
+		$exclude_args.push compiled
 	elsif arg == '--version'
 		log "ghbuild #{$VERSION}\n"
 		exit 0
@@ -65,9 +70,17 @@ ARGV.each do |arg|
 end
 
 info "Welcome to ghbuild (#{$VERSION})\n"
-
 info "ghbuild working directory: #{$bwd.bold}\n"
 
+log "Mode: #{$mode}\n"
+log "Files excluded:\n"
+if $exclude_args.length != 0
+	$exclude_args.each_with_index do |e, index|
+		log "\t##{index + 1} #{e.to_s}\n"
+	end
+else
+	log "\t(nothing!)\n"
+end
 class Step
 	attr_accessor :name
 	attr_accessor :type
@@ -82,10 +95,20 @@ end
 
 log "Loading files\n"
 
+def exclude? name
+	$exclude_args.each do |e|
+		if e =~ name
+			return true
+		end
+	end
+	return false
+end
+
 execute do
 	Dir['**/*.rb'].select do |file|
 		basename = File.basename file
-		if basename =~ /^([^-]+)-(pre|p|build|b|install|i|test|t)-([0-9])\.rb$/
+		if basename =~ /^([^-]+)-(pre|p|build|b|install|i|test|t)-([0-9])\.rb$/ \
+			and not exclude? basename; then
 			step = Step.new
 			step.content = IO.read file
 			reg = /^([^-]+)-(pre|p|build|b|install|i|test|t)-([0-9])\.rb$/
@@ -115,6 +138,8 @@ execute do
 				else
 					error "fixme:this is not possible step.type\n"
 			end
+		elsif exclude? basename
+			info "\tExcluded: #{basename}\n"
 		end
 	end
 end

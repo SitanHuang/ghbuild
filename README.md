@@ -1,34 +1,26 @@
 # ghbuild
 colorized build system using ruby
 
-Current Version: alpha(after PRE-RELEASE)
+Current Version: alpha 0.1.6pre
 
 # sample output
-	bash ;) 20:15:24 [SitanHuang@localhost xxx_web_project] ghbuild --version
-	| ghbuild alpha(after PRE-RELEASE)
-	bash ;) 20:15:38 [SitanHuang@localhost xxx_web_project] ghbuild
-	| Welcome to ghbuild (alpha(after PRE-RELEASE))
-	| ghbuild working directory: /home/D/JAVA-dev/xxx_web_project
-	| No ghb file detected, creating the file
-	bash ;( 20:15:46 [SitanHuang@localhost xxx_web_project] ghbuild --mode=local
-	| Mode: local
-	| Welcome to ghbuild (alpha(after PRE-RELEASE))
-	| ghbuild working directory: /home/D/JAVA-dev/xxx_web_project
+	bash ;) 16:36:42 [SitanHuang@localhost ghb](master) ghbuild --version
+	| ghbuild alpha 0.1.6pre
+	bash ;) 16:36:46 [SitanHuang@localhost ghb](master) ghbuild --exclude=.+-test-[0-9].+ --exclude=.+-t-[0-9].+
+	| Welcome to ghbuild (alpha 0.1.6pre)
+	| ghbuild working directory: /home/D/ruby/ghb
+	| Mode: 
+	| Files excluded:
+	| 	#1 (?-mix:.+-test-[0-9].+)
+	| 	#2 (?-mix:.+-t-[0-9].+)
 	| Loading files
+	| 	Excluded: test-test-0.rb
+	| 	Excluded: test1-test-1.rb
 	| OK
-	| Found target preprocess with 4 object(s)
-	| 	Processing out/artifacts/xxx_web_project_war_exploded/seekcab in step 0
-	| 		SeekCab~~~~~~~~~~
-	| 		ghbuild version == alpha(after PRE-RELEASE)
-	| 	Processing ./seekcab in step 0
-	| 		SeekCab~~~~~~~~~~
-	| 		ghbuild version == alpha(after PRE-RELEASE)
-	| 	Processing out/artifacts/xxx_web_project_war_exploded/WEB-INF/classes/conf/config.properties in step 1
-	| 		remoteImageDir = 192.168.0.5:8080
-	| 		Updated: config.properties
-	| 	Processing src/conf/config.properties in step 1
-	| 		remoteImageDir = 192.168.0.5:8080
-	| 		Updated: config.properties
+	| Found target preprocess with 1 object(s)
+	| 	Processing ./test in step 0
+	| 	ghbuild executable found
+	bash ;) 16:37:58 [SitanHuang@localhost ghb](master) 
 
 
 # installation
@@ -41,8 +33,6 @@ test if ghbuild is working:
 
 	[user@localhost test] ghbuild --version
 
-	| ghbuild PRE-RELEASE
-
 initialize a ghbuild directory in a normal directory:
 
 	[user@localhost test] ghbuild
@@ -54,6 +44,8 @@ destroying a ghbuild directory:
 set $mode variable: --mode=xxx
 
 only necessary outputs: --quiet
+
+exclude filename: --exclude=regex
 
 run:
 	[user@localhost test] ghbuild # you must have ghbuild initialized on this directory
@@ -88,6 +80,8 @@ $mode - command line --mode argument
 $bwd - shell working directory
 
 $VERSION - version of ghbuild
+
+$exclude - a list of exclude patterns
 
 ##colorize
 see the document for ruby colorize
