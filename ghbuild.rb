@@ -103,6 +103,7 @@ else
 end
 class Step
 	attr_accessor :name
+    attr_accessor :shortName
 	attr_accessor :type
 	attr_accessor :step
 	attr_accessor :content
@@ -133,6 +134,7 @@ execute do
 			step.content = IO.read file
 			reg = /^([^-]+)-(pre|p|build|b|install|i|test|t)-([0-9])\.rb$/
 			step.name = File.dirname(file) + '/' + basename.sub(reg, '\1')
+            step.shortName = basename.sub(reg, '\1')
 			type = basename.sub(reg, '\2')
 			case type
 				when 'p'
@@ -148,28 +150,28 @@ execute do
             case type
                when 'pre'
                     $preproc_list.each do |e|
-                        if e.name == step.name
+                        if e.shortName == step.shortName
                             skip = true
                             break
                         end
                     end
              when 'build'
                     $build_list.each do |e|
-                        if e.name == step.name
+                        if e.shortName == step.shortName
                             skip = true
                             break
                         end
                     end
                 when 'install'
                     $install_list.each do |e|
-                        if e.name == step.name
+                        if e.shortName == step.shortName
                             skip = true
                             break
                         end
                     end
                 when 'test'
                     $test_list.each do |e|
-                        if e.name == step.name
+                        if e.shortName == step.shortName
                             skip = true
                             break
                         end
