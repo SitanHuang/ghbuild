@@ -9,14 +9,10 @@ $test_list    = []
 
 $mode         = ''
 
-def assert a,s
+def assert a,s = "assertion failed: #{a}"
     if !a
-        error "assertion failed: #{s}\n"
+        error "#{s}\n"
     end
-end
-
-def assert a
-    assert a, "#{a}"
 end
 
 def info s
