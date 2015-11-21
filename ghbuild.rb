@@ -9,6 +9,16 @@ $test_list    = []
 
 $mode         = ''
 
+def assert a,s
+    if !a
+        error "assertion failed: #{s}\n"
+    end
+end
+
+def assert a
+    assert a, "#{a}"
+end
+
 def info s
 	if !$quiet
 		print "#{'|'.bold.colorize(:light_blue)} #{s}"
@@ -50,7 +60,7 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'alpha 0.1.6aft'
+$VERSION = 'alpha 0.1.6aftB'
 
 $exclude_args = []
 

@@ -77,6 +77,7 @@ log(string) - operational logging without new line
 error(string) - error logging without new line then terminate
 
 request_root(l,s) - request root permission, l:output if success, s:output if failed
+assert(object,[message])
 
 ##variables
 $mode - command line --mode argument
