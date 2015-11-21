@@ -1,13 +1,13 @@
 # ghbuild
 colorized build system using ruby
 
-Current Version: alpha 0.1.6aft
+Current Version: alpha 0.1.8
 
 # sample output
 	bash ;) 16:36:42 [SitanHuang@localhost ghb](master) ghbuild --version
-	| ghbuild alpha 0.1.6aft
+	| ghbuild alpha 0.1.8
 	bash ;) 16:36:46 [SitanHuang@localhost ghb](master) ghbuild --exclude=.+-test-[0-9].+ --exclude=.+-t-[0-9].+
-	| Welcome to ghbuild (alpha 0.1.6aft)
+	| Welcome to ghbuild (alpha 0.1.8)
 	| ghbuild working directory: /home/D/ruby/ghb
 	| Mode: 
 	| Files excluded:
