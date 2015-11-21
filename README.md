@@ -47,6 +47,8 @@ only necessary outputs: --quiet
 
 exclude filename: --exclude=regex
 
+no duplicates: --no_basename_dups
+
 run:
 	[user@localhost test] ghbuild # you must have ghbuild initialized on this directory
 
