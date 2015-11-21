@@ -49,6 +49,8 @@ exclude filename: --exclude=regex
 
 no duplicates: --no_basename_dups
 
+only list files without processing: --no_proc
+
 run:
 	[user@localhost test] ghbuild # you must have ghbuild initialized on this directory
 
@@ -91,6 +93,8 @@ $VERSION - version of ghbuild
 $exclude - a list of exclude patterns
 
 $no_basename_dups
+
+$no_proc
 
 lwd - current script directory
 

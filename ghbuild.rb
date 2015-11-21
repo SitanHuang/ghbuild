@@ -56,11 +56,13 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'alpha 0.1.8'
+$VERSION = 'alpha 0.1.9'
 
 $exclude_args = []
 
 $no_basename_dups = false
+
+$no_proc = false
 
 ARGV.each do |arg|
 	if arg.start_with? '--mode='
@@ -82,6 +84,8 @@ ARGV.each do |arg|
 	elsif arg == '--version'
 		log "ghbuild #{$VERSION}\n"
 		exit 0
+    elsif arg == '--no_proc'
+        $no_proc = true
 	else
 		error "Unknown option: #{arg}\n"
 	end
@@ -204,6 +208,9 @@ execute do
 	end
 end
 log "OK\n"
+if $no_proc
+    info "No processing\n"
+end
 def processTarget(target)
 	list = []
 	case target
@@ -220,10 +227,14 @@ def processTarget(target)
 	9.times do
 		list.each do |step|
 			if step.step == index
-				log "\tProcessing #{step.name} in step #{index}\n"
-				execute do
-                    eval "lwd=#{"./#{File.dirname(step.name)}".inspect}\n#{step.content}"
-				end
+                if !$no_proc
+                    log "\tProcessing #{step.name} in step #{index}\n"
+                    execute do
+                        eval "lwd=#{"./#{File.dirname(step.name)}".inspect}\n#{step.content}"
+                    end
+                else
+                    info "\tFound #{step.name} in step #{index}\n"
+                end
 			end
 		end
 		index += 1
