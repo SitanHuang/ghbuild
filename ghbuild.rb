@@ -56,7 +56,7 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'alpha 0.1.7pre'
+$VERSION = 'alpha 0.1.8'
 
 $exclude_args = []
 
@@ -148,14 +148,14 @@ execute do
 			end
             skip=false
             case type
-               when 'pre'
+                when 'pre'
                     $preproc_list.each do |e|
                         if e.shortName == step.shortName
                             skip = true
                             break
                         end
                     end
-             when 'build'
+                when 'build'
                     $build_list.each do |e|
                         if e.shortName == step.shortName
                             skip = true
@@ -176,6 +176,9 @@ execute do
                             break
                         end
                     end
+            end
+            if !$no_basename_dups
+                skip = false
             end
             if !skip
                 step.type = type
@@ -219,7 +222,7 @@ def processTarget(target)
 			if step.step == index
 				log "\tProcessing #{step.name} in step #{index}\n"
 				execute do
-					eval step.content
+                    eval "lwd=#{"./#{File.dirname(step.name)}".inspect}\n#{step.content}"
 				end
 			end
 		end

@@ -90,5 +90,9 @@ $VERSION - version of ghbuild
 
 $exclude - a list of exclude patterns
 
+$no_basename_dups
+
+lwd - current script directory
+
 ##colorize
 see the document for ruby colorize
