@@ -56,9 +56,11 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'alpha 0.1.6aftB'
+$VERSION = 'alpha 0.1.7pre'
 
 $exclude_args = []
+
+$no_basename_dups = false
 
 ARGV.each do |arg|
 	if arg.start_with? '--mode='
@@ -75,6 +77,8 @@ ARGV.each do |arg|
 		tmp_exclude = arg.gsub '--exclude=', ''
 		compiled = Regexp.new tmp_exclude
 		$exclude_args.push compiled
+    elsif arg == '--no_basename_dups'
+        $no_basename_dups = true
 	elsif arg == '--version'
 		log "ghbuild #{$VERSION}\n"
 		exit 0
@@ -85,7 +89,9 @@ end
 
 info "Welcome to ghbuild (#{$VERSION})\n"
 info "ghbuild working directory: #{$bwd.bold}\n"
-
+if $no_basename_dups
+    log "No duplicates of basenames\n"
+end
 log "Mode: #{$mode}\n"
 log "Files excluded:\n"
 if $exclude_args.length != 0
@@ -138,21 +144,56 @@ execute do
 				when 't'
 					type = 'test'
 			end
-			step.type = type
-			step.step = Integer(basename.sub(reg, '\3'))
-			case step.type
-				when 'pre'
-					$preproc_list.push step
-				when 'build'
-					$build_list.push step
-				when 'install'
-					$install_list.push step
-				when 'test'
-					$test_list.push step
-				else
-					error "fixme:this is not possible step.type\n"
-			end
-		elsif exclude? basename
+            skip=false
+            case type
+               when 'pre'
+                    $preproc_list.each do |e|
+                        if e.name == step.name
+                            skip = true
+                            break
+                        end
+                    end
+             when 'build'
+                    $build_list.each do |e|
+                        if e.name == step.name
+                            skip = true
+                            break
+                        end
+                    end
+                when 'install'
+                    $install_list.each do |e|
+                        if e.name == step.name
+                            skip = true
+                            break
+                        end
+                    end
+                when 'test'
+                    $test_list.each do |e|
+                        if e.name == step.name
+                            skip = true
+                            break
+                        end
+                    end
+            end
+            if !skip
+                step.type = type
+                step.step = Integer(basename.sub(reg, '\3'))
+                case step.type
+                    when 'pre'
+                        $preproc_list.push step
+                    when 'build'
+                        $build_list.push step
+                    when 'install'
+                        $install_list.push step
+                    when 'test'
+                        $test_list.push step
+                    else
+                        error "fixme:this is not possible step.type\n"
+                end
+            else
+                info "\tDuplicate: #{step.name}\n"
+            end
+        elsif exclude? basename
 			info "\tExcluded: #{basename}\n"
 		end
 	end
