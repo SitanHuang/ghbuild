@@ -56,7 +56,7 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'alpha 0.1.9'
+$VERSION = 'alpha 0.1.91'
 
 $exclude_args = []
 
@@ -137,8 +137,8 @@ execute do
 			step = Step.new
 			step.content = IO.read file
 			reg = /^([^-]+)-(pre|p|build|b|install|i|test|t)-([0-9])\.rb$/
-			step.name = File.dirname(file) + '/' + basename.sub(reg, '\1')
-            step.shortName = basename.sub(reg, '\1')
+            step.shortName = basename.sub(reg, '\1').gsub('_', ' ')
+            step.name = File.dirname(file) + '/' + step.shortName
 			type = basename.sub(reg, '\2')
 			case type
 				when 'p'
@@ -228,12 +228,12 @@ def processTarget(target)
 		list.each do |step|
 			if step.step == index
                 if !$no_proc
-                    log "\tProcessing #{step.name} in step #{index}\n"
+                    log "\tProcessing '#{step.name}' in step #{index}\n"
                     execute do
                         eval "lwd=#{"./#{File.dirname(step.name)}".inspect}\n#{step.content}"
                     end
                 else
-                    info "\tFound #{step.name} in step #{index}\n"
+                    info "\tFound '#{step.name}' in step #{index}\n"
                 end
 			end
 		end

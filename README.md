@@ -1,13 +1,13 @@
 # ghbuild
 colorized build system using ruby
 
-Current Version: alpha 0.1.9
+Current Version: alpha 0.1.91
 
 # sample output
 	bash ;) 16:36:42 [SitanHuang@localhost ghb](master) ghbuild --version
-	| ghbuild alpha 0.1.9
+	| ghbuild alpha 0.1.91
 	bash ;) 16:36:46 [SitanHuang@localhost ghb](master) ghbuild --exclude=.+-test-[0-9].+ --exclude=.+-t-[0-9].+
-	| Welcome to ghbuild (alpha 0.1.9)
+	| Welcome to ghbuild (alpha 0.1.91)
 	| ghbuild working directory: /home/D/ruby/ghb
 	| Mode: 
 	| Files excluded:
@@ -66,6 +66,8 @@ run:
 just create a file named:
 
 	(name)-(pre|p|build|b|install|i|test|t)-(step number 0-9).rb
+
+*note: '_' in name will be replaced with a space*
 
 then ghbuild will follow:
 
