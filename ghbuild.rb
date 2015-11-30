@@ -56,7 +56,7 @@ end
 
 $bwd = Dir.pwd
 
-$VERSION = 'alpha 0.1.91'
+$VERSION = 'alpha 0.1.93'
 
 $exclude_args = []
 
@@ -228,12 +228,12 @@ def processTarget(target)
 		list.each do |step|
 			if step.step == index
                 if !$no_proc
-                    log "\tProcessing '#{step.name}' in step #{index}\n"
+                    log "\tProcessing '#{step.name.light_green}' in step #{index.to_s.bold.light_green}\n"
                     execute do
                         eval "lwd=#{"./#{File.dirname(step.name)}".inspect}\n#{step.content}"
                     end
                 else
-                    info "\tFound '#{step.name}' in step #{index}\n"
+                    info "\tFound '#{step.name.bold.light_blue}' in step #{index.to_s.bold.light_blue}\n"
                 end
 			end
 		end
