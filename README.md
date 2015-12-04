@@ -1,26 +1,33 @@
 # ghbuild
 colorized build system using ruby
 
-Current Version: alpha 0.1.91
+Current Version: alpha 0.1.93
 
 # sample output
-	bash ;) 16:36:42 [SitanHuang@localhost ghb](master) ghbuild --version
-	| ghbuild alpha 0.1.91
-	bash ;) 16:36:46 [SitanHuang@localhost ghb](master) ghbuild --exclude=.+-test-[0-9].+ --exclude=.+-t-[0-9].+
-	| Welcome to ghbuild (alpha 0.1.91)
-	| ghbuild working directory: /home/D/ruby/ghb
-	| Mode: 
-	| Files excluded:
-	| 	#1 (?-mix:.+-test-[0-9].+)
-	| 	#2 (?-mix:.+-t-[0-9].+)
-	| Loading files
-	| 	Excluded: test-test-0.rb
-	| 	Excluded: test1-test-1.rb
-	| OK
-	| Found target preprocess with 1 object(s)
-	| 	Processing ./test in step 0
-	| 	ghbuild executable found
-	bash ;) 16:37:58 [SitanHuang@localhost ghb](master) 
+    | Welcome to ghbuild (alpha 0.1.93)
+    | ghbuild working directory: /home/D/CPP-dev/idea
+    | Mode: debug
+    | Files excluded:
+    |   (nothing!)
+    | Loading files
+    | OK
+    | Found target preprocess with 1 object(s)
+    |   Processing './check enviroment' in step 0
+    |       Checking ghbuild version
+    |       alpha 0.1.93
+    |       Checking files under /home/D/CPP-dev/idea
+    |       Checking libaries
+    |       Checking root
+    | Root detected ;)
+    | Found target build with 1 object(s)
+    |   Processing './build' in step 1
+    |       You can set the $mode parameter to debug or analyze Idea
+    |       Running command: /usr/bin/make debug
+    rm -f idea;gcc -I/usr/local/include/gc main.c /usr/local/lib/libgc.a -lpthread -lm -DJSON_TRACK_SOURCE -o idea -g
+    |       build successfull!
+    | Found target install with 1 object(s)
+    |   Processing './install' in step 1
+    |       Installed to /usr/bin
 
 
 # installation
@@ -83,6 +90,7 @@ log(string) - operational logging without new line
 error(string) - error logging without new line then terminate
 
 request_root(l,s) - request root permission, l:output if success, s:output if failed
+
 assert(object,[message])
 
 ##variables
