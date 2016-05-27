@@ -1,7 +1,7 @@
 # ghbuild
 colorized build system using ruby
 
-Current Version: alpha 0.1.93
+Current Version: alpha 0.1.96
 
 # sample output
     | Welcome to ghbuild (alpha 0.1.93)
@@ -12,7 +12,7 @@ Current Version: alpha 0.1.93
     | Loading files
     | OK
     | Found target preprocess with 1 object(s)
-    |   Processing './check enviroment' in step 0
+    |   Processing './check_enviroment' in step 0
     |       Checking ghbuild version
     |       alpha 0.1.93
     |       Checking files under /home/D/CPP-dev/idea
@@ -57,6 +57,8 @@ exclude filename: --exclude=regex
 no duplicates: --no_basename_dups
 
 only list files without processing: --no_proc
+
+specify tasks to run: --task=xxx
 
 run:
 	[user@localhost test] ghbuild # you must have ghbuild initialized on this directory
